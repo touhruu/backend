@@ -8,6 +8,13 @@ class VideoService{
         return video
     }
 
+    async getLastVideo(){
+        const video = await Video.findOne({
+            order: [ [ 'createdAt', 'DESC' ]],
+        })
+        return video.id
+    }
+
     async create(video){
         const fileExtention = path.extname(video.name);
         const fileName = uuidv4() + fileExtention;

@@ -1,5 +1,7 @@
 const { Sequelize, DataTypes, Model } = require('sequelize')
 const { sequelize } = require('../dbcon')
+const { User } = require('./User')
+const { Room } = require('./Room')
 
 class MessageChat extends Model {}
 
@@ -17,5 +19,6 @@ MessageChat.init(
   { sequelize, modelName: 'MessageChat' }
 )
 
+MessageChat.belongsTo(User)
 
 module.exports = { MessageChat }

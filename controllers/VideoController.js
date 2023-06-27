@@ -7,6 +7,11 @@ class VideoController{
         res.json(video)
     }
 
+    async getLastVideo(_, res){
+        const video = await VideoService.getLastVideo()
+        res.json(video)
+    }
+
     async create(req, res){
         const video = await VideoService.create(req.files.file)
         res.json(video)

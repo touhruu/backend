@@ -4,9 +4,17 @@ const { User } = require('../models/User')
 const { Room } = require('../models/Room')
 
 class MessageChatService{
-    async getAll(){
+    async getAll(url){
+        const room = await Room.findOne({
+            where: {
+                url: url
+            }
+        })
         const messages = await MessageChat.findAll({
-            include: [Anime, User]
+            where: {
+                RoomId: room.id
+            },
+            include: [User]
         })
         return messages
     }

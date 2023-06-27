@@ -15,6 +15,7 @@ const router = require('./router')
 const app = express()
 const cors = require('cors')
 const http = require('http')
+const { MessageChat } = require('./models/MessageChat')
 
 const server = http.createServer(app)
 
@@ -34,7 +35,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('newMessage', () => {
-      socket.local.emit('message')
+      socket.emit('message')
     })
 
     socket.on('setPlay', () => {
@@ -66,7 +67,7 @@ async function bootstrap(){
     }
 
     const corsOptions = {
-      origin: "http://localhost:8080",
+      origin: ["http://localhost:8080", "http://141.8.194.146"],
       optionsSuccessStatus: 200,
       credentials: true
     }

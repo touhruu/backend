@@ -65,6 +65,7 @@ router.post('/auth/log', AuthController.login)
 router.get('/auth/users', RoleMiddleware(2), AuthController.getUsers)
 
 router.get('/videos', VideoController.videoAll)
+router.get('/video-last', VideoController.getLastVideo)
 router.post('/video', VideoController.create)
 router.get('/video/:id', VideoController.videoOne)
 router.put('/video/:id', VideoController.update)
@@ -85,7 +86,7 @@ router.post('/room', AuthMiddleware, RoomController.create)
 router.post('/room/addUser', AuthMiddleware, RoomController.addUserInRoom)
 router.get('/room/:url', RoomController.getByIdRoom)
 
-router.get('/getMessage', MessageChatController.getAll)
+router.get('/getMessage/:id', MessageChatController.getAll)
 router.post('/addMessage', AuthMiddleware, MessageChatController.create)
 
 module.exports = router

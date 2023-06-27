@@ -2,7 +2,8 @@ const MessageChatService = require('../services/MessageChatService')
 
 class MessageChatController{
     async getAll(req, res){
-        const messages = await MessageChatService.getAll()
+        const {id} = req.params
+        const messages = await MessageChatService.getAll(id)
 
         return res.json(messages)
     }

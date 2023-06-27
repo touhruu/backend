@@ -10,7 +10,7 @@ class VideoService{
 
     async getLastVideo(){
         const video = await Video.findOne({
-            order: [ [ 'createdAt', 'DESC' ]],
+            order: [[ 'createdAt', 'DESC' ]],
         })
         return video.id
     }

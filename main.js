@@ -21,7 +21,7 @@ const server = http.createServer(app)
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: 'http://localhost:8080',
+    origin: 'http://141.8.194.146',
     credentials: true
   }
 });
